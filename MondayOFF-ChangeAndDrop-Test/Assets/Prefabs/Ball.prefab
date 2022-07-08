@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7888308049727900711}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0377, y: 2.1339998, z: -1.9515}
+  m_LocalPosition: {x: -0.0377, y: 2.25, z: -1.831}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -137,7 +137,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dc5b6d8ab6423214790bce800f23d189, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,10 +158,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.05
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -177,11 +177,11 @@ TrailRenderer:
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: 0
-        outSlope: 0
+        inSlope: -2.0213904
+        outSlope: -2.0213904
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.1047619
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -189,7 +189,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.514151, g: 0.5499288, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 0.17254902}
+      key1: {r: 0, g: 0.28991652, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
