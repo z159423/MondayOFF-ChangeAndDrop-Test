@@ -14,6 +14,9 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     public bool Pressed;
 
+    private bool BoxTrigger = false;
+    private bool TouchEnable = true;
+
     [Space]
 
     [SerializeField] private Transform box;
@@ -30,6 +33,9 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     void Update()
     {
+        if (!TouchEnable)
+            return;
+
         if (Pressed)
         {
             if (PointerId >= 0 && PointerId < Input.touches.Length)
@@ -45,7 +51,7 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                 PointerOld = Input.mousePosition;
             }
 
-            
+            ClampBoxPosition();
         }
         else
         {
@@ -60,12 +66,31 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         Pressed = true;
         PointerId = eventData.pointerId;
         PointerOld = eventData.position;
+
+        if (!BoxTrigger)
+        {
+            boxAnimator.SetTrigger("Close");
+            BoxTrigger = true;
+        }
     }
 
 
     public void OnPointerUp(PointerEventData eventData)
     {
         Pressed = false;
+        
+
+        if (BoxTrigger)
+        {
+            boxAnimator.SetTrigger("Open");
+
+            TouchEnable = false;
+        }
+    }
+
+    private void ClampBoxPosition()
+    {
+        box.position = new Vector3(box.position.x, box.position.y, Mathf.Clamp(box.position.z, originBoxPosition.z - maxDragDistance, originBoxPosition.z + maxDragDistance));
     }
 
 }
