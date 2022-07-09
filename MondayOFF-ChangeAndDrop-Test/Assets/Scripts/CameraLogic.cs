@@ -10,7 +10,7 @@ public class CameraLogic : MonoBehaviour
     [SerializeField] private Vector3 cameraOffset ;
 
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         if(ballGenerator.generatedBallList.Count > 0)
         {

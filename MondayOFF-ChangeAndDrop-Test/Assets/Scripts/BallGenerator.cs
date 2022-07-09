@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BallGenerator : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class BallGenerator : MonoBehaviour
     [SerializeField] private int ballReleaseAmount = 5;
 
     public static BallGenerator instance;
+
+    [Space]
+
+    public UnityEvent gameOverEvent;
 
     private void Awake()
     {
@@ -64,6 +69,11 @@ public class BallGenerator : MonoBehaviour
         ballStack.Push(ball);
 
         ball.SetActive(false);
+
+        if (generatedBallList.Count <= 0)
+            gameOverEvent.Invoke();
+
+
     }
 
     public void ReleaseBall()
