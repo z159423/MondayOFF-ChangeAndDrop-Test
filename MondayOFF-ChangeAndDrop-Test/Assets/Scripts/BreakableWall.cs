@@ -16,6 +16,7 @@ public class BreakableWall : MonoBehaviour
 
     private bool ballCountCheck = false;
 
+    private Coroutine currentCoroutine;
     private void OnEnable()
     {
         currentHp = WallHP;
@@ -31,8 +32,13 @@ public class BreakableWall : MonoBehaviour
     {
         if (other.TryGetComponent<Ball>(out Ball ball))
         {
-            StopCoroutine(BallCountCheck());
-            StartCoroutine(BallCountCheck());
+            if(currentCoroutine != null)
+            {
+                StopCoroutine(currentCoroutine);
+                currentCoroutine = null;
+            }
+
+            currentCoroutine = StartCoroutine(BallCountCheck());
 
             currentHp--;
 
@@ -67,15 +73,25 @@ public class BreakableWall : MonoBehaviour
 
             breakParticles[i].Play();
         }
+
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+            currentCoroutine = null;
+        }
     }
 
     private IEnumerator BallCountCheck()
     {
         
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
 
         if (BallGenerator.instance.generatedBallList.Count < WallHP)
+        {
+            Debug.LogError("1111" + gameObject.name);
             GameManager.instance.GameOver();
+        }
+            
         
     }
 }

@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7888308049727900711}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.0377, y: 2.25, z: -1.831}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.09, y: 0.09, z: 0.09}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,7 +109,7 @@ Rigidbody:
   m_GameObject: {fileID: 7888308049727900711}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 1.5
+  m_Drag: 1.2
   m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -158,10 +158,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.3
+  m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.05
+    widthMultiplier: 0.03
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -237,3 +237,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duplicateWalls: []
+  ballColor: 0
+  blueMat:
+  - {fileID: 2100000, guid: dc5b6d8ab6423214790bce800f23d189, type: 2}
+  blueColor:
+    serializedVersion: 2
+    key0: {r: 0.514151, g: 0.5499288, b: 1, a: 1}
+    key1: {r: 0, g: 0.28991652, b: 1, a: 0}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  orangeMat:
+  - {fileID: 2100000, guid: e0944cdeee6c2b04e9eac79f54126ba7, type: 2}
+  orangeColor:
+    serializedVersion: 2
+    key0: {r: 1, g: 0.6039734, b: 0, a: 1}
+    key1: {r: 1, g: 0.6039216, b: 0, a: 0}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  meshRenderer: {fileID: 7888308049727900706}
+  trailRenderer: {fileID: 7888308049727900701}
+  rigidbody: {fileID: 7888308049727900704}

@@ -3,12 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
     [SerializeField] private Button retryButton;
+    [SerializeField] private CameraLogic camera;
+
+    [Space]
+
+    public Material[] blueMat;
+    public Gradient blueColor;
+
+    public Material[] orangeMat;
+    public Gradient orangeColor;
 
     private void Awake()
     {
@@ -19,11 +29,23 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        retryButton.gameObject.SetActive(true);
+        StartCoroutine(delayTime());
+
+        IEnumerator delayTime()
+        {
+            yield return new WaitForSeconds(0.5f);
+
+            retryButton.gameObject.SetActive(true);
+        }
+    }
+
+    public void GameClear()
+    {
+        camera.followBall = false;
     }
 
     public void Retry()
     {
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
