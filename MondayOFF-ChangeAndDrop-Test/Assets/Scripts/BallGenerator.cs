@@ -141,4 +141,21 @@ public class BallGenerator : MonoBehaviour
         generatedBallList[0] = ball;
         generatedBallList[idx] = temp;
     }
+
+    public GameObject GetFastestBall()
+    {
+        GameObject fastestBall = null;
+        float height = 100;
+
+        for(int i = 0; i < generatedBallList.Count; i++)
+        {
+            if (generatedBallList[i].transform.position.y < height)
+            {
+                fastestBall = generatedBallList[i];
+                height = generatedBallList[i].transform.position.y;
+            }
+        }
+
+        return fastestBall;
+    }
 }

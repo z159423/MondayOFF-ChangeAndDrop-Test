@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BreakableWall : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private TextMeshProUGUI hpText;
+
 
     [SerializeField] private int WallHP = 10;
 
@@ -26,6 +29,8 @@ public class BreakableWall : MonoBehaviour
         break1Hp = num * 3;
         break2Hp = num * 2;
         break3Hp = num;
+
+        hpText.text = WallHP.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -79,6 +84,8 @@ public class BreakableWall : MonoBehaviour
             StopCoroutine(currentCoroutine);
             currentCoroutine = null;
         }
+
+        hpText.gameObject.SetActive(false);
     }
 
     private IEnumerator BallCountCheck()

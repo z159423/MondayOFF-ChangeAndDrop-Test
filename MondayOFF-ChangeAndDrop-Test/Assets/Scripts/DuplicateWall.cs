@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DuplicateWall : MonoBehaviour
 {
     [SerializeField] private int duplicateValue = 2;
 
     [SerializeField] private Color wallColor;
+    [SerializeField] private TextMeshProUGUI duplicateValueText;
 
     private bool cameraFollow = false;
+
+    private void OnEnable()
+    {
+        duplicateValueText.text = duplicateValue.ToString() + "X";
+    }
 
     private void OnTriggerEnter(Collider other)
     {

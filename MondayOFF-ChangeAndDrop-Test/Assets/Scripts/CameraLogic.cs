@@ -14,12 +14,15 @@ public class CameraLogic : MonoBehaviour
     public Transform boxPosition;
 
     public GameObject forcusBall;
+    public GameObject fastestBall;
 
     public static CameraLogic instance;
 
     private void Awake()
     {
         instance = this;
+
+        StartCoroutine(CheckFastestBall());
     }
 
 
@@ -29,7 +32,27 @@ public class CameraLogic : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, boxPosition.transform.position.y, transform.position.z) + cameraOffset, cameraMoveSpeed * Time.deltaTime);
         }
-        else if(ballGenerator.generatedBallList.Count > 0 && followBall)
+        else if(ballGenerator.generatedBallList.Count > 0)
+        {
+            if(fastestBall != null)
+            {
+                if(fastestBall.activeSelf)
+                {
+                    cameraPosition = fastestBall.transform.position;
+
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, cameraPosition.y, transform.position.z) + cameraOffset, cameraMoveSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    fastestBall = BallGenerator.instance.GetFastestBall();
+                }
+            }
+            else
+            {
+                fastestBall = BallGenerator.instance.GetFastestBall();
+            }
+        }
+        /*else if(ballGenerator.generatedBallList.Count > 0 && followBall)
         {
             if(forcusBall != null)
             {
@@ -53,7 +76,7 @@ public class CameraLogic : MonoBehaviour
 
                 transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, cameraPosition.y, transform.position.z) + cameraOffset, cameraMoveSpeed * Time.deltaTime);
             }
-        }
+        }*/
         
     }
 
@@ -67,5 +90,16 @@ public class CameraLogic : MonoBehaviour
         followBox = true;
 
         boxPosition = box;
+    }
+
+    public IEnumerator CheckFastestBall()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1f);
+
+            if (ballGenerator.generatedBallList.Count > 0)
+                fastestBall = BallGenerator.instance.GetFastestBall();
+        }
     }
 }

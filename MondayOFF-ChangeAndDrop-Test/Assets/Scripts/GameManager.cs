@@ -20,11 +20,15 @@ public class GameManager : MonoBehaviour
     public Material[] orangeMat;
     public Gradient orangeColor;
 
+    [SerializeField] private GameObject[] stages;
+
     private void Awake()
     {
         instance = this;
 
         Application.targetFrameRate = 60;
+
+        GenerateRandomStage();
     }
 
     public void GameOver()
@@ -47,5 +51,12 @@ public class GameManager : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void GenerateRandomStage()
+    {
+        int value = Random.Range(0, stages.Length);
+
+        stages[value].gameObject.SetActive(true);
     }
 }
